@@ -1,0 +1,26 @@
+<div class="relative">
+    @if(day && day.isCurrentMonth){
+
+        <div
+            (click)="selectDay()"
+            [ngClass]="day.tasks.length | taskColor"
+            class="cursor-pointer rounded-lg w-10 h-10 hover:bg-opacity-80 hover:border-slate-800/50 transition-all border-2"
+            (mouseenter)="showTooltip()"
+            (mouseleave)="hideTooltip()"
+        >
+        </div>
+
+        <div
+            class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-2 py-1 bg-slate-800 text-white text-sm rounded-lg transition-all duration-300 whitespace-nowrap"
+            [ngClass]="{
+                'opacity-0 pointer-events-none invisible': !isTooltipVisible,
+                'opacity-100 visible': isTooltipVisible
+            }"
+        >
+            <p>{{ title }}</p>
+        </div>
+
+    } @else {
+        <div class="rounded-lg w-10 h-10"></div>
+    }
+</div>
