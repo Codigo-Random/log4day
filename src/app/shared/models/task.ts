@@ -4,6 +4,6 @@ export interface Task {
     project: string,
     projectColor: string,
     duration: number;
-    startTime: Date;
+    startTime: string;
     createdAt: Date;
 }

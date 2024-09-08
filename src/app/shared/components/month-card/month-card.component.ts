@@ -3,6 +3,7 @@ import { BlockItemComponent } from "../block-item/block-item.component";
 import { DayTasks } from '../../models/day-tasks';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'month-card',
@@ -14,7 +15,7 @@ export class MonthCardComponent implements OnInit {
   @Input() selectedDate!: Date; // 0-11, donde 0 es enero y 11 es diciembre
   weeks: DayTasks[][] = [];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private ts: TaskService) {
 
   }
 
@@ -46,7 +47,7 @@ export class MonthCardComponent implements OnInit {
       currentWeek.push({
         date: this.toLocalDate(d),
         isCurrentMonth: d.getUTCMonth() === this.selectedDate.getUTCMonth(),
-        tasks: []
+        tasks: this.ts.getTaskByDate(d)
       });
     }
 

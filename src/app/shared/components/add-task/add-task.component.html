@@ -1,67 +1,107 @@
 <div class="bg-slate-900/80 fixed left-0 top-0 z-40 h-full w-full overflow-y-auto overflow-x-hidden outline-none">
 
-    <div class="relative transition-all duration-300 z-50 ease-in-out max-w-screen-sm mx-auto py-16 p-4 transform-none opacity-100">
+    <div
+        class="relative transition-all duration-300 z-50 ease-in-out max-w-screen-sm mx-auto py-16 p-4 transform-none opacity-100">
         <div class="flex flex-col p-6 bg-white rounded-xl shadow-md">
             <div class="flex justify-between items-baseline">
                 <h1 class="font-medium text-lg mb-3">Añadir nueva tarea</h1>
-                <button (click)="closeModal()" class="flex items-center justify-center bg-slate-100 rounded-xl p-1 transition-all hover:bg-slate-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
-                        <path fill="currentColor" fill-rule="evenodd" d="M4.28 3.22a.75.75 0 0 0-1.06 1.06L6.94 8l-3.72 3.72a.75.75 0 1 0 1.06 1.06L8 9.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L9.06 8l3.72-3.72a.75.75 0 0 0-1.06-1.06L8 6.94L4.28 3.22Z" clip-rule="evenodd"/>
+                <button
+                    (click)="closeModal()"
+                    class="flex items-center justify-center bg-slate-100 rounded-xl p-1 transition-all hover:bg-slate-200"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            fill="currentColor"
+                            fill-rule="evenodd"
+                            d="M4.28 3.22a.75.75 0 0 0-1.06 1.06L6.94 8l-3.72 3.72a.75.75 0 1 0 1.06 1.06L8 9.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L9.06 8l3.72-3.72a.75.75 0 0 0-1.06-1.06L8 6.94L4.28 3.22Z"
+                            clip-rule="evenodd"
+                        />
                     </svg>
                 </button>
             </div>
-            <form class="flex flex-col gap-y-3 pb-2 px-2 pt-6 border-t">
+            <form
+                [formGroup]="mForm"
+                (ngSubmit)="onSubmit()"
+                class="flex flex-col gap-y-3 pb-2 px-2 pt-6 border-t"
+            >
                 <div class="flex flex-col gap-1">
                     <label for="project">Proyecto</label>
                     <input
+                        formControlName="project"
                         class="border border-slate-300 rounded-lg p-2"
                         type="text"
+                        id="project"
                         placeholder="Nombre del proyecto"
                     >
                 </div>
                 <div class="flex flex-col gap-1">
-                    <label for="project">Tarea</label>
+                    <label for="color">Color asignado al proyecto</label>
                     <input
+                        formControlName="color"
+                        class="p-1 h-10 w-14 block bg-white border border-gray-200 cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700"
+                        type="color"
+                        id="color"
+                    >
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label for="task">Tarea</label>
+                    <input
+                        formControlName="title"
                         class="border border-slate-300 rounded-lg p-2"
                         type="text"
+                        id="task"
                         placeholder="Tarea realizada"
                     >
                 </div>
                 <div class="flex flex-col gap-1">
-                    <label for="project">Descripción</label>
+                    <label for="info">Descripción</label>
                     <textarea
+                        formControlName="info"
                         class="border border-slate-300 rounded-lg p-2"
                         type="text"
+                        id="info"
                         placeholder="Más información sobre la tarea"
                     ></textarea>
                 </div>
-    
+
                 <div class="flex flex-row gap-1">
                     <div class="flex flex-col">
-                        <label for="project">Inicio</label>
+                        <label for="start">Inicio</label>
                         <input
+                            formControlName="start"
+                            id="start"
                             class="border border-slate-300 rounded-lg p-2"
                             type="time"
                         >
                     </div>
                     <div class="flex flex-col">
-                        <label for="project">Duración (minutos)</label>
+                        <label for="time">Duración (minutos)</label>
                         <input
+                            formControlName="duration"
+                            id="time"
                             class="border border-slate-300 rounded-lg p-2"
                             type="number"
                         >
                     </div>
                 </div>
-    
+
                 <div class="text-center bg-slate-50 rounded-xl p-4">
                     <p class="font-medium text-lg">4h 50min</p>
                     <p class="text-sm text-slate-700">Finalización el 12 de septiembre a las 15:56</p>
                 </div>
-    
-                <button class="bg-blue-600 text-white rounded-lg p-4 mt-4 transition-all hover:bg-blue-800">Guardar</button>
+
+                <button
+                    type="submit"
+                    class="bg-blue-600 text-white rounded-lg p-4 mt-4 transition-all hover:bg-blue-800"
+                >Guardar</button>
             </form>
         </div>
-    
+
     </div>
 
 </div>

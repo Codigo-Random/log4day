@@ -5,12 +5,17 @@
         <p class="col-span-1">Duración</p>
     </div>
 
-    <div class="grid grid-cols-4 gap-2 p-2">
-        <p class="col-span-3 flex items-center">
-            <span class="w-2 h-2 block rounded-full bg-indigo-700 mr-2"></span>
-            Tarea hecha lalala
-        </p>
-        <p class="col-span-1 text-end">50 min</p>
-    </div>
+    @for (task of tasks; track $index) {
+        <div class="grid grid-cols-4 gap-2 p-2">
+            <p class="col-span-3 flex items-center">
+                <span 
+                [style]="{'background-color': task.projectColor}" 
+                class="w-2 h-2 block rounded-full mr-2">
+                </span>
+                {{task.title}}
+            </p>
+            <p class="col-span-1 text-end">{{task.duration}} min</p>
+        </div>
+    }
 
 </div>

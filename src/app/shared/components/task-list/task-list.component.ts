@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Task } from '../../models/task';
 
 @Component({
   selector: 'task-list',
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
   templateUrl: './task-list.component.html'
 })
 export class TaskListComponent {
+
+  @Input() tasks: Task[] = []
 
 }

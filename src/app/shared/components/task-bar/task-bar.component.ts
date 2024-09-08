@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Task } from '../../models/task';
 
 @Component({
   selector: 'task-bar',
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
   templateUrl: './task-bar.component.html'
 })
 export class TaskBarComponent {
+
+  @Input() tasks: Task[] = []
 
 }

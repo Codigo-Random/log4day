@@ -31,5 +31,15 @@ export class TaskService {
     return parsedTasks
   }
 
+  getTaskByDate(date: Date): Task[] {
+    const parsedTasks = this.getAllTasks();
+    const targetDate = new Date(date);
+    return parsedTasks.filter(task => {
+      const taskDate = new Date(task.startTime);
+      return taskDate.getFullYear() === targetDate.getFullYear() &&
+        taskDate.getMonth() === targetDate.getMonth() &&
+        taskDate.getDate() === targetDate.getDate();
+    });
+  }
 
 }
