@@ -1,4 +1,4 @@
-import { NgClass } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TaskColorPipe } from '../../pipes/task-color.pipe';
 import { DayTasks } from '../../models/day-tasks';
@@ -6,15 +6,13 @@ import { DayTasks } from '../../models/day-tasks';
 @Component({
   selector: 'block-item',
   standalone: true,
-  imports: [NgClass, TaskColorPipe],
+  imports: [NgClass, TaskColorPipe, DatePipe],
   templateUrl: './block-item.component.html'
 })
 export class BlockItemComponent implements OnInit {
 
   @Input() day?: DayTasks
   @Output() selectedDay = new EventEmitter<Date>();
-
-  title = 'block-item';
 
   isTooltipVisible: boolean = false;
 
